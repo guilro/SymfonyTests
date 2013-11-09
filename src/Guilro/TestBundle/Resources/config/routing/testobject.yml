@@ -1,0 +1,30 @@
+testobject:
+    pattern:  /
+    defaults: { _controller: "GuilroTestBundle:TestObject:index" }
+
+testobject_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "GuilroTestBundle:TestObject:show" }
+
+testobject_new:
+    pattern:  /new
+    defaults: { _controller: "GuilroTestBundle:TestObject:new" }
+
+testobject_create:
+    pattern:  /create
+    defaults: { _controller: "GuilroTestBundle:TestObject:create" }
+    requirements: { _method: post }
+
+testobject_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "GuilroTestBundle:TestObject:edit" }
+
+testobject_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "GuilroTestBundle:TestObject:update" }
+    requirements: { _method: post|put }
+
+testobject_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "GuilroTestBundle:TestObject:delete" }
+    requirements: { _method: post|delete }

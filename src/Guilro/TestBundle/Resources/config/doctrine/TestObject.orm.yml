@@ -1,0 +1,14 @@
+Guilro\TestBundle\Entity\TestObject:
+    type: entity
+    table: null
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        testField:
+            type: string
+            length: 255
+            column: test_field
+    lifecycleCallbacks: {  }
