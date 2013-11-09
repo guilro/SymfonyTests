@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
 use Symfony\Component\Security\Acl\Domain\UserSecurityIdentity;
+use Symfony\Component\Security\Acl\Domain\RoleSecurityIdentity;
 use Symfony\Component\Security\Acl\Permission\MaskBuilder;
 
 use Guilro\TestBundle\Entity\TestObject;
@@ -46,41 +47,45 @@ class TestObjectController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
-            $entity2 = new TestObject();
-            $entity2->setTestField($entity->getTestField() . '_copy');
-            $em->persist($entity2);
             $em->flush();
 
             $securityContext = $this->get('security.context');
-            $user = $securityContext->getToken()->getUser();
-            $sid = $securityIdentity = UserSecurityIdentity::fromAccount($user);
+//            $user = $securityContext->getToken()->getUser();
+//            $sid = $securityIdentity = UserSecurityIdentity::fromAccount($user);
 
+            $fieldName = 'aFieldName';
+            // trying code following issue #9433
+            // step 2 works
             $aclProvider = $this->get('security.acl.provider');
-            $o1 = ObjectIdentity::FromDomainObject($entity);
-            $o2 = ObjectIdentity::FromDomainObject($entity2);
-            $aclProvider->createAcl($o1);
-            $aclProvider->createAcl($o2);
+            $oid = ObjectIdentity::FromDomainObject($entity);
+            $acl = $aclProvider->createAcl($oid);
 
-            //code given in issue #9239
+            $roleUser  = new RoleSecurityIdentity('ROLE_USER');
+            $mask      = new MaskBuilder(4); // 4 = EDIT
+            $acl->insertobjectFieldAce($fieldName, $roleUser, $mask->get());
 
-            $acl1 = $aclProvider->findAcl($o1);
-            $acl2 = $aclProvider->findAcl($o2);
+            $aclProvider->updateAcl($acl);
 
-            $acl1->insertClassAce($sid, 4);
-            $aclProvider->updateAcl($acl1);
-            // Both acls see the class ace - OK
-            var_dump($acl1->getClassAces()[0]->getMask()); // prints 4.
-            var_dump($acl2->getClassAces()[0]->getMask()); // prints 4.
+            // step 3 works
+            $acl  = $aclProvider->findAcl($oid);
+            $roleUser  = new RoleSecurityIdentity('ROLE_FOO');
+            $mask      = new MaskBuilder(4); // 4 = EDIT
 
-            $acl2->updateClassAce(0, 42);
-            // Both acls see the updated class ace - OK
-            var_dump($acl2->getClassAces()[0]->getMask()); // prints 42.
-            var_dump($acl1->getClassAces()[0]->getMask()); // prints 42.
+            $acl->insertobjectFieldAce($fieldName, $roleUser, $mask->get());
+            $aclProvider->updateAcl($acl);
 
-            $aclProvider->updateAcl($acl2); // [!!] Changes will not be saved to database
-            //end code given in issue #9239
+            // step 4 ?
+            $acl  = $aclProvider->findAcl($oid);
+            $roleUser  = new RoleSecurityIdentity('ROLE_BAR');
+            $mask      = new MaskBuilder(4); // 4 = EDIT
 
-            return $this->render('GuilroTestBundle:TestObject:show.html.twig', array('entity' => $entity));
+            $acl->insertobjectFieldAce($fieldName, $roleUser, $mask->get());
+            $aclProvider->updateAcl($acl);
+
+            $entities = $em->getRepository('GuilroTestBundle:TestObject')->findAll();
+            return $this->render('GuilroTestBundle:TestObject:index.html.twig', array(
+                'entities' => $entities,
+            ));
         }
 
         return $this->render('GuilroTestBundle:TestObject:new.html.twig', array(
