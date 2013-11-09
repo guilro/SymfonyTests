@@ -80,7 +80,7 @@ class TestObjectController extends Controller
             $aclProvider->updateAcl($acl2); // [!!] Changes will not be saved to database
             //end code given in issue #9239
 
-            return $this->redirect($this->generateUrl('testobject_show', array('id' => $entity->getId())));
+            return $this->render('GuilroTestBundle:TestObject:show.html.twig', array('entity' => $entity));
         }
 
         return $this->render('GuilroTestBundle:TestObject:new.html.twig', array(
