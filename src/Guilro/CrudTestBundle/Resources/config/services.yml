@@ -1,0 +1,7 @@
+parameters:
+#    guilro_crud_test.example.class: Guilro\CrudTestBundle\Example
+
+services:
+#    guilro_crud_test.example:
+#        class: %guilro_crud_test.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
