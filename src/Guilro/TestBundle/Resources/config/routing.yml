@@ -4,5 +4,5 @@ guilro_test_homepage:
 
 GuilroTestBundle_testobject:
     resource: "@GuilroTestBundle/Resources/config/routing/testobject.yml"
-    prefix:   /testobject
+    prefix:   /
 

@@ -56,6 +56,7 @@ class TestObjectController extends Controller
             $fieldName = 'aFieldName';
             // trying code following issue #9433
             // step 2 works
+            echo 'step2';
             $aclProvider = $this->get('security.acl.provider');
             $oid = ObjectIdentity::FromDomainObject($entity);
             $acl = $aclProvider->createAcl($oid);
@@ -67,6 +68,7 @@ class TestObjectController extends Controller
             $aclProvider->updateAcl($acl);
 
             // step 3 works
+            echo 'step3';
             $acl  = $aclProvider->findAcl($oid);
             $roleUser  = new RoleSecurityIdentity('ROLE_FOO');
             $mask      = new MaskBuilder(4); // 4 = EDIT
@@ -75,11 +77,13 @@ class TestObjectController extends Controller
             $aclProvider->updateAcl($acl);
 
             // step 4 ?
+            echo 'step4';
             $acl  = $aclProvider->findAcl($oid);
             $roleUser  = new RoleSecurityIdentity('ROLE_BAR');
             $mask      = new MaskBuilder(4); // 4 = EDIT
 
             $acl->insertobjectFieldAce($fieldName, $roleUser, $mask->get());
+            echo 'update ?';
             $aclProvider->updateAcl($acl);
 
             $entities = $em->getRepository('GuilroTestBundle:TestObject')->findAll();
