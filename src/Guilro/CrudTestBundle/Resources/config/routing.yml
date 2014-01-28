@@ -1,3 +1,0 @@
-guilro_crud_test_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: GuilroCrudTestBundle:Default:index }
