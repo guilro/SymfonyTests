@@ -1,4 +1,4 @@
-Guilro\TestBundle\Entity\TestObject:
+Guilro\UserTestBundle\Entity\User:
     type: entity
     table: null
     fields:
@@ -7,8 +7,4 @@ Guilro\TestBundle\Entity\TestObject:
             id: true
             generator:
                 strategy: AUTO
-        testField:
-            type: string
-            length: 255
-            column: test_field
     lifecycleCallbacks: {  }

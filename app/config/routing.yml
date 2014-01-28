@@ -2,10 +2,6 @@ guilro_crud_test:
     resource: "@GuilroCrudTestBundle/Resources/config/routing.yml"
     prefix:   /
 
-guilro_test:
-    resource: "@GuilroTestBundle/Resources/config/routing.yml"
-    prefix:   /
-
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 

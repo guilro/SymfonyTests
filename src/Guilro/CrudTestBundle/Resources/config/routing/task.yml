@@ -1,0 +1,30 @@
+_index:
+    pattern:  /
+    defaults: { _controller: "GuilroCrudTestBundle:Task:index" }
+
+_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "GuilroCrudTestBundle:Task:show" }
+
+_new:
+    pattern:  /new
+    defaults: { _controller: "GuilroCrudTestBundle:Task:new" }
+
+_create:
+    pattern:  /create
+    defaults: { _controller: "GuilroCrudTestBundle:Task:create" }
+    requirements: { _method: post }
+
+_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "GuilroCrudTestBundle:Task:edit" }
+
+_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "GuilroCrudTestBundle:Task:update" }
+    requirements: { _method: post|put }
+
+_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "GuilroCrudTestBundle:Task:delete" }
+    requirements: { _method: post|delete }

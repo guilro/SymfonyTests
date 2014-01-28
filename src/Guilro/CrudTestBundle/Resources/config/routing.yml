@@ -1,3 +1,4 @@
-guilro_crud_test_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: GuilroCrudTestBundle:Default:index }
+guilro_crud_test:
+    resource: "@GuilroCrudTestBundle/Resources/config/routing/task.yml"
+    prefix:   /
+

@@ -3,7 +3,7 @@ security:
         connection: default
 
     encoders:
-        Guilro\TestBundle\Entity\User: sha512
+        Guilro\UserTestBundle\Entity\User: sha512
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER

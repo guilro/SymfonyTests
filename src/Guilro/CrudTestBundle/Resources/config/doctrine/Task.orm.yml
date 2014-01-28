@@ -1,4 +1,4 @@
-Guilro\TestBundle\Entity\User:
+Guilro\CrudTestBundle\Entity\Task:
     type: entity
     table: null
     fields:
@@ -7,4 +7,9 @@ Guilro\TestBundle\Entity\User:
             id: true
             generator:
                 strategy: AUTO
+        name:
+            type: string
+            length: 255
+        tags:
+            type: array
     lifecycleCallbacks: {  }

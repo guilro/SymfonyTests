@@ -1,0 +1,3 @@
+GuilroDefaultBundle_index:
+    pattern:  /{name}
+    defaults: { _controller: GuilroTestBundle:Default:index }
