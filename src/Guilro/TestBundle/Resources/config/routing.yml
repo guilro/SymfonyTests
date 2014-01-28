@@ -1,8 +1,7 @@
-guilro_test_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: GuilroTestBundle:Default:index }
-
 GuilroTestBundle_testobject:
     resource: "@GuilroTestBundle/Resources/config/routing/testobject.yml"
     prefix:   /testobject
 
+GuilroDefaultBundle_index:
+    pattern:  /{name}
+    defaults: { _controller: GuilroTestBundle:Default:index }

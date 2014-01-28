@@ -1,3 +1,7 @@
+guilro_crud_test:
+    resource: "@GuilroCrudTestBundle/Resources/config/routing.yml"
+    prefix:   /
+
 guilro_test:
     resource: "@GuilroTestBundle/Resources/config/routing.yml"
     prefix:   /
