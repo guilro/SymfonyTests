@@ -128,6 +128,8 @@ class TaskController extends Controller
             throw $this->createNotFoundException('Unable to find Task entity.');
         }
 
+        $entity->addTag(new Tag());
+
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 

@@ -17,7 +17,7 @@ class TaskType extends AbstractType
         $builder
             ->add('name')
             ->add('tags', 'collection', array(
-                'type' => 'guilro_crudtestbundle_tag',
+                'type' => new TagType(),
                 'error_bubbling' => false,
                 'allow_add'    => true,
                 'by_reference' => false,
