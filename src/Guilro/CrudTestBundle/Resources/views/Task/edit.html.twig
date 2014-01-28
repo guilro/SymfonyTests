@@ -3,11 +3,19 @@
 {% block body -%}
     <h1>Task edit</h1>
 
-    {{ form(edit_form) }}
-
+    {{ form_start(edit_form) }}
+        {{ form_row(edit_form.name) }}
+        Tags : <br/>
+        {% for tag_form in edit_form.tags %}
+            Tag {{ loop.index }} : {{ form_row(tag_form) }}
+            {{ form_errors(tag_form) }}
+        {% endfor %}
+        New tag :
+        {{ form_widget(edit_form.tags.vars.prototype, { required: false}) }}
+    {{ form_end(edit_form) }}
         <ul class="record_actions">
     <li>
-        <a href="{{ path('') }}">
+        <a href="{{ path('index_') }}">
             Back to the list
         </a>
     </li>

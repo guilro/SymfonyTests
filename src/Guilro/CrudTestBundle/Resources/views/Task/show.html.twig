@@ -15,14 +15,20 @@
             </tr>
             <tr>
                 <th>Tags</th>
-                <td>{{ entity.tags }}</td>
+                <td>
+                    <ul>
+                    {% for tag in entity.tags %}
+                        <li>Name: {{tag.name}} Description: {{ tag.description }}
+                    {% endfor %}
+                    </ul>
+                </td>
             </tr>
         </tbody>
     </table>
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('') }}">
+        <a href="{{ path('index_') }}">
             Back to the list
         </a>
     </li>

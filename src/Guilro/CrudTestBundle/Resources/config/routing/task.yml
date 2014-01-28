@@ -1,4 +1,4 @@
-_index:
+index_:
     pattern:  /
     defaults: { _controller: "GuilroCrudTestBundle:Task:index" }
 

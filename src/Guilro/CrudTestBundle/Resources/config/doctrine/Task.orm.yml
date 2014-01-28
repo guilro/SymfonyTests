@@ -10,6 +10,9 @@ Guilro\CrudTestBundle\Entity\Task:
         name:
             type: string
             length: 255
+    oneToMany:
         tags:
-            type: array
+            targetEntity: Tag
+            mappedBy: task
+            cascade: [ "persist" ]
     lifecycleCallbacks: {  }

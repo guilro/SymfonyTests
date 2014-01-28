@@ -16,17 +16,24 @@ class TaskType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('tags')
+            ->add('tags', 'collection', array(
+                'type' => 'guilro_crudtestbundle_tag',
+                'error_bubbling' => false,
+                'allow_add'    => true,
+                'by_reference' => false,
+                'cascade_validation' => true
+            ));
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Guilro\CrudTestBundle\Entity\Task'
+            'data_class' => 'Guilro\CrudTestBundle\Entity\Task',
+            'cascade_validation' => true
         ));
     }
 

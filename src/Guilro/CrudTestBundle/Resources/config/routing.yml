@@ -1,4 +1,3 @@
-guilro_crud_test:
+guilroCrudTestBundle_:
     resource: "@GuilroCrudTestBundle/Resources/config/routing/task.yml"
     prefix:   /
-

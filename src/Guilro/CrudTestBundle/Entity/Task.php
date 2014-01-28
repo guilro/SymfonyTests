@@ -24,11 +24,18 @@ class Task
      */
     private $tags;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -44,14 +51,14 @@ class Task
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -67,17 +74,48 @@ class Task
     public function setTags($tags)
     {
         $this->tags = $tags;
-    
+
         return $this;
     }
 
     /**
      * Get tags
      *
-     * @return array 
+     * @return array
      */
     public function getTags()
     {
         return $this->tags;
+    }
+    /**
+     * @var string
+     */
+    private $oneToMany;
+
+
+
+
+    /**
+     * Add tags
+     *
+     * @param \Guilro\CrudTestBundle\Entity\Tag $tags
+     * @return Task
+     */
+    public function addTag(\Guilro\CrudTestBundle\Entity\Tag $tags)
+    {
+        $this->tags[] = $tags;
+        $tags->setTask($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove tags
+     *
+     * @param \Guilro\CrudTestBundle\Entity\Tag $tags
+     */
+    public function removeTag(\Guilro\CrudTestBundle\Entity\Tag $tags)
+    {
+        $this->tags->removeElement($tags);
     }
 }

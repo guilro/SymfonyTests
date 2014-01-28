@@ -13,4 +13,12 @@ Guilro\CrudTestBundle\Entity\Tag:
         description:
             type: string
             length: 255
-    lifecycleCallbacks: {  }
+            nullable: true
+    manyToOne:
+        task:
+            targetEntity: Task
+            inversedBy: tags
+            cascade: [ "persist" ]
+            joinColumn:
+                name: task_id
+                referencedColumnName: id

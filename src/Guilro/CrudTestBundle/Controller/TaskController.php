@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Guilro\CrudTestBundle\Entity\Task;
+use Guilro\CrudTestBundle\Entity\Tag;
 use Guilro\CrudTestBundle\Form\TaskType;
 
 /**
@@ -78,11 +79,16 @@ class TaskController extends Controller
      */
     public function newAction()
     {
-        $entity = new Task();
-        $form   = $this->createCreateForm($entity);
+        $task = new Task();
+        $tag1 = new Tag();
+        $task->getTags()->add($tag1);
+        $tag2 = new Tag();
+        $task->getTags()->add($tag2);
+
+        $form   = $this->createCreateForm($task);
 
         return $this->render('GuilroCrudTestBundle:Task:new.html.twig', array(
-            'entity' => $entity,
+            'entity' => $task,
             'form'   => $form->createView(),
         ));
     }
@@ -170,7 +176,6 @@ class TaskController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
-
             return $this->redirect($this->generateUrl('_edit', array('id' => $id)));
         }
 
@@ -201,7 +206,7 @@ class TaskController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl(''));
+        return $this->redirect($this->generateUrl('index_'));
     }
 
     /**

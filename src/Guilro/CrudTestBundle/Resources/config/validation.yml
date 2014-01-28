@@ -1,0 +1,6 @@
+Guilro\CrudTestBundle\Entity\Tag:
+    properties:
+        name:
+            - NotBlank: ~
+        description:
+            - NotBlank: { groups: [Edit] }
