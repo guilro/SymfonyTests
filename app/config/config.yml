@@ -69,3 +69,12 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: Guilro\UserTestBundle\Entity\User
+
+guilro_protection_proxy:
+    caching: true
+    protected_classes:
+        Guilro\CrudTestBundle\Entity\Task:
+            methods:
+                getName:
+                    attribute: ROLE_ADMINA
+                    deny_value: 'Name hidden !'

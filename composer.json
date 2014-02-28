@@ -20,7 +20,7 @@
         "sensio/generator-bundle": "2.3.*",
 	      "friendsofsymfony/user-bundle": "~2.0@dev",
         "incenteev/composer-parameter-handler": "~2.0",
-        "guilro/protection-proxy-bundle": "0.1.*"
+        "guilro/protection-proxy-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

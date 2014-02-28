@@ -18,7 +18,8 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Guilro\CrudTestBundle\GuilroCrudTestBundle(),
-            new Guilro\UserTestBundle\GuilroUserTestBundle()
+            new Guilro\UserTestBundle\GuilroUserTestBundle(),
+            new Guilro\ProtectionProxyBundle\GuilroProtectionProxyBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

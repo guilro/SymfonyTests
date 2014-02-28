@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "c1f2e1ef8e957d803eacc99c45b2c18d",
+    "hash": "b03df5c24660739e74672fbef5306f82",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -693,17 +693,17 @@
         },
         {
             "name": "guilro/protection-proxy-bundle",
-            "version": "0.1.2",
+            "version": "dev-master",
             "target-dir": "Guilro/ProtectionProxyBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Guilro/GuilroProtectionProxyBundle.git",
-                "reference": "9d6f2096f85c5e16af84a0f125a0a3f042c17c17"
+                "reference": "0f7de2fd2b29392225fd9b9fb22259ea90e8a991"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Guilro/GuilroProtectionProxyBundle/zipball/9d6f2096f85c5e16af84a0f125a0a3f042c17c17",
-                "reference": "9d6f2096f85c5e16af84a0f125a0a3f042c17c17",
+                "url": "https://api.github.com/repos/Guilro/GuilroProtectionProxyBundle/zipball/0f7de2fd2b29392225fd9b9fb22259ea90e8a991",
+                "reference": "0f7de2fd2b29392225fd9b9fb22259ea90e8a991",
                 "shasum": ""
             },
             "require": {
@@ -732,7 +732,7 @@
             ],
             "description": "Protection proxy generator for Symfony2",
             "homepage": "https://github.com/Guilro/GuilroProtectionProxyBundle",
-            "time": "2014-02-11 21:29:31"
+            "time": "2014-02-28 14:15:55"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -1868,7 +1868,8 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "friendsofsymfony/user-bundle": 20
+        "friendsofsymfony/user-bundle": 20,
+        "guilro/protection-proxy-bundle": 20
     },
     "platform": {
         "php": ">=5.3.3"

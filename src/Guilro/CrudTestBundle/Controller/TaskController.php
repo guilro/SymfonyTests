@@ -103,6 +103,8 @@ class TaskController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
+        $entity = $this->get('guilro.protection_proxy')->getProxy($entity);
+
         return $this->render('GuilroCrudTestBundle:Task:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
